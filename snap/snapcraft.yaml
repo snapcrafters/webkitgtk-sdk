@@ -110,5 +110,6 @@ parts:
       for PC in $(find . -path "*/pkgconfig/*.pc")
       do
          sed -i '1cprefix=/snap/webkitgtk-sdk/current/usr' $PC
+         sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
       done   
 
