@@ -53,7 +53,7 @@ parts:
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
-    build-packages:
+    stage-packages:
       - bubblewrap
       - gettext
       - gperf
