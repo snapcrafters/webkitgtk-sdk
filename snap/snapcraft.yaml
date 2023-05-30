@@ -104,44 +104,43 @@ parts:
       - xdg-dbus-proxy
     stage-packages:
       - bubblewrap
-      - gstreamer1.0-libav
-      - gstreamer1.0-plugins-base
-      - gstreamer1.0-plugins-good
-      - libabsl20210324
-      - libaom3
-      - libatomic1
-      - libavif13
-      - libdav1d5
+      - gperf
+      - libavif-dev
+      - libcurl4-gnutls-dev
+      - libdav1d-dev
+      - libenchant-2-dev
       - libelf-dev
-      - libenchant-2-2
-      - libepoxy0
-      - libgles2
-      - libglx0
-      - libgav1-0
-      - libglu1-mesa
-      - libgstreamer-gl1.0-0
-      - libgstreamer-plugins-base1.0-0
-      - libgstreamer-plugins-bad1.0-0
-      - libgstreamer1.0-0
-      - libhyphen0
-      - liblcms2-2
-      - libmanette-0.2-0
+      - libepoxy-dev
+      - libfreetype-dev
+      - libgcrypt20-dev
+      - libghc-text-icu-dev
+      - libghc-text-icu-prof
+      - libgav1-dev
+      - libglx-dev
+      - libgstreamer1.0-dev
+      - libgstreamer-plugins-bad1.0-dev
+      - libgstreamer-plugins-base1.0-dev
+      - libgstreamer-plugins-good1.0-dev
+      - libhyphen-dev
+      - liblcms2-dev
+      - libmanette-0.2-dev
       - libnghttp2-14
-      - libopengl0
       - libopenjp2-7
-      - libsecret-1-0
-      - libseccomp2
-      - libtasn1-6
+      - libopengl-dev
+      - libpng16-16
+      - libsoup-3.0-dev
+      - libsecret-1-dev
+      - libseccomp-dev
+      - libsqlite3-dev
+      - libtasn1-6-dev
       - libwebp7
-      - libwebpdemux2
-      - libwoff1  
-      - libwpe-1.0-1
-      - libwpebackend-fdo-1.0-1
-      - libxcomposite1
-      - libxslt1.1
-      - libyuv0
-      - libsoup-3.0-0
-      - libsystemd0
+      - libwpe-1.0-dev
+      - libwpebackend-fdo-1.0-dev
+      - libwoff-dev
+      - libxslt1-dev
+      - libxt-dev
+      - ruby-all-dev
+      - unifdef
       - xdg-dbus-proxy
   prefix-fix:
     plugin: nil
