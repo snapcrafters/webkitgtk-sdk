@@ -112,7 +112,7 @@ parts:
       - libatomic1
       - libavif13
       - libdav1d5
-      - libelf1
+      - libelf-dev
       - libenchant-2-2
       - libepoxy0
       - libgles2
