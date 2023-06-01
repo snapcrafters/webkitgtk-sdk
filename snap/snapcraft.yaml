@@ -19,7 +19,7 @@ parts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX=/usr
       - -DCMAKE_INSTALL_LIBDIR=lib/$CRAFT_ARCH_TRIPLET
-      - -DCMAKE_INSTALL_LIBEXECDIR=lib
+      - -DCMAKE_INSTALL_LIBEXECDIR=lib/$CRAFT_ARCH_TRIPLET
       - -DCMAKE_SKIP_RPATH=ON
       - -DUSE_AVIF=ON
       - -DUSE_GTK4=ON
@@ -75,46 +75,7 @@ parts:
       - ruby-all-dev
       - unifdef
       - xdg-dbus-proxy
-    stage-packages:
-      - bubblewrap
-      - gstreamer1.0-libav
-      - gstreamer1.0-plugins-base
-      - gstreamer1.0-plugins-good
-      - libabsl20210324
-      - libaom3
-      - libatomic1
-      - libavif13
-      - libdav1d5
-      - libenchant-2-2
-      - libepoxy0
-      - libgles2
-      - libglx0
-      - libgav1-0
-      - libglu1-mesa
-      - libgstreamer-gl1.0-0
-      - libgstreamer-plugins-base1.0-0
-      - libgstreamer-plugins-bad1.0-0
-      - libgstreamer1.0-0
-      - libhyphen0
-      - liblcms2-2
-      - libmanette-0.2-0
-      - libnghttp2-14
-      - libopengl0
-      - libopenjp2-7
-      - libsecret-1-0
-      - libseccomp2
-      - libtasn1-6
-      - libwebp7
-      - libwebpdemux2
-      - libwoff1  
-      - libwpe-1.0-1
-      - libwpebackend-fdo-1.0-1
-      - libxcomposite1
-      - libxslt1.1
-      - libyuv0
-      - libsoup-3.0-0
-      - libsystemd0
-      - xdg-dbus-proxy
+      
   prefix-fix:
     plugin: nil
     after: [webkitgtk-6-gnome-2204-sdk]
@@ -125,4 +86,42 @@ parts:
          sed -i '1cprefix=/snap/webkitgtk-sdk/current/usr' $PC
          sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
       done   
-
+    stage-packages:
+      - bubblewrap
+      - gstreamer1.0-libav
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - libabsl20210324
+      - libaom3
+      - libatomic1
+      - libavif13
+      - libdav1d5
+      - libelf-dev
+      - libenchant-2-2
+      - libepoxy0
+      - libgles2
+      - libglx0
+      - libgav1-0
+      - libglu1-mesa
+      - libgstreamer-gl1.0-0
+      - libgstreamer-plugins-base1.0-0
+      - libgstreamer1.0-0
+      - libhyphen0
+      - liblcms2-2
+      - libmanette-0.2-0
+      - libnghttp2-14
+      - libopengl0
+      - libopenjp2-7
+      - libsecret-1-0
+      - libseccomp2
+      - libtasn1-6
+      - libwebpdemux2
+      - libwoff1  
+      - libwpe-1.0-1
+      - libwpebackend-fdo-1.0-1
+      - libxcomposite1
+      - libxslt1.1
+      - libyuv0
+      - libsoup-3.0-dev
+      - libsystemd0
+      - xdg-dbus-proxy
