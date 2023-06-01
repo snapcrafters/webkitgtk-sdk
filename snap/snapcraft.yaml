@@ -1,132 +1,115 @@
-name: webkitgtk-sdk # you probably want to 'snapcraft register <name>'
+name: webkitgtk-6-gnome-2204 # you probably want to 'snapcraft register <name>'
 base: core22 # the base snap is the execution environment for this snap
-version: '6.0' # just for humans, typically '1.2+git' or '1.3.2'
-summary: Web content engine for GTK(SDK) # 79 char long summary
+version: git # just for humans, typically '1.2+git' or '1.3.2'
+summary: Web content engine for GTK # 79 char long summary
 description: |
-  SDK snap for Webkitgtk-6.0+
+  Content snap for Webkitgtk-6.0+
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
+architectures:
+  - build-on: amd64
+slots:
+  webkitgtk:
+    interface: content
+    read:
+      - /
 
 parts:
-  webkitgtk-sdk:
-    #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
-    source: https://github.com/WebKit/WebKit.git
-    source-tag: webkitgtk-2.40.1
-    plugin: cmake
-    #build-environment: 
-    #  - PYTHONPATH: $CRAFT_STAGE/lib/python3.10/site-packages
-    #  - LDFLAGS: -licuuc -licudata -licuio
-    cmake-parameters:
-      - -DPORT=GTK
-      - -DCMAKE_BUILD_TYPE=Release
-      - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_INSTALL_LIBDIR=lib
-      - -DCMAKE_INSTALL_LIBEXECDIR=lib
-      - -DCMAKE_SKIP_RPATH=ON
-      - -DUSE_AVIF=ON
-      - -DUSE_GTK4=ON
-      - -DENABLE_JOURNALD_LOG=OFF
-      - -DENABLE_DOCUMENTATION=OFF
-      - -DENABLE_MINIBROWSER=ON
-    build-packages:
-      - bubblewrap
-      - gettext
-      - gperf
-      - icu-devtools
-      - libavif-dev
-      - libcairo2-dev
-      - libcurl4-gnutls-dev
-      - libdav1d-dev
-      - libenchant-2-dev
-      - libepoxy-dev
-      - libfreetype-dev
-      - libgcrypt20-dev
-      - libghc-text-icu-dev
-      - libghc-text-icu-prof
-      - libgav1-dev
-      - libglx-dev
-      - libgstreamer1.0-dev
-      - libgstreamer-plugins-bad1.0-dev
-      - libgstreamer-plugins-base1.0-dev
-      - libgstreamer-plugins-good1.0-dev
-      - libgtk-4-dev
-      - libharfbuzz-dev
-      - libhyphen-dev
-      - libicu-dev
-      - libicu-le-hb-dev
-      - liblcms2-dev
-      - libmanette-0.2-dev
-      - libnghttp2-dev
-      - libopenjp2-7-dev
-      - libopengl-dev
-      - libpng-dev
-      - libsoup-3.0-dev
-      - libsecret-1-dev
-      - libseccomp-dev
-      - libsqlite3-dev
-      - libtasn1-6-dev
-      - libwebp-dev
-      - libwpe-1.0-dev
-      - libwpebackend-fdo-1.0-dev
-      - libwoff-dev
-      - libxcomposite-dev
-      - libxdamage-dev
-      - libxrender-dev
-      - libxslt1-dev
-      - libxt-dev
-      - ruby-all-dev
-      - unifdef
-      - xdg-dbus-proxy
-    stage-packages:
-      - bubblewrap
-      - gstreamer1.0-libav
-      - gstreamer1.0-plugins-base
-      - gstreamer1.0-plugins-good
-      - libabsl20210324
-      - libaom3
-      - libatomic1
-      - libavif13
-      - libdav1d5
-      - libelf-dev
-      - libenchant-2-2
-      - libepoxy0
-      - libgles2
-      - libglx0
-      - libgav1-0
-      - libglu1-mesa
-      - libgstreamer-gl1.0-0
-      - libgstreamer-plugins-base1.0-0
-      - libgstreamer-plugins-bad1.0-0
-      - libgstreamer1.0-0
-      - libhyphen0
-      - liblcms2-2
-      - libmanette-0.2-0
-      - libnghttp2-14
-      - libopengl0
-      - libopenjp2-7
-      - libsecret-1-0
-      - libseccomp2
-      - libtasn1-6
-      - libwebp7
-      - libwebpdemux2
-      - libwoff1  
-      - libwpe-1.0-1
-      - libwpebackend-fdo-1.0-1
-      - libxcomposite1
-      - libxslt1.1
-      - libyuv0
-      - libsoup-3.0-0
-      - libsystemd0
-      - xdg-dbus-proxy
-  prefix-fix:
+  webkitgtk:
     plugin: nil
-    after: [webkitgtk-sdk]
-    override-prime: |
-      craftctl default
-      for PC in $(find . -path "*/pkgconfig/*.pc")
-      do
-         sed -i '1cprefix=/snap/webkitgtk-sdk/current/usr' $PC
-         sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
-      done   
+    stage-snaps: [ webkitgtk-6-gnome-2204/latest/edge ]
+    prime:
+      - usr/bin/WebKitWebDriver
+      - usr/bin/bwrap
+      - usr/share/gir-1.0/*
+      - usr/share/locale/*
+      - usr/lib/libjavascriptcoregtk*
+      - usr/lib/webkitgtk-6.0/*
+      - usr/lib/libwebkitgtk*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/girepository-1.0/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/lapack/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libv4l/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libv4lconvert0/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/mfx/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/perl5
+      - usr/lib/$CRAFT_ARCH_TRIPLET/pulseaudio/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/vdpau/*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libabsl*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libaom*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libass*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libavc*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libavf*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libavif*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libavu*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libb*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libchroma*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libcodec*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libdav*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libflite*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgav*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgfortran*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgme*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgsm*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstadaptive*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstbad*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstcodec*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstin*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstis*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstmpeg*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstplay*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstctp*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstt*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstu*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstva*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstwayland*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libgstweb*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/liblil*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libmfx*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libmysofa*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libnorm*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libnuma*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libOp*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libopenmpt*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpgm*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpixman*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpocket*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libpsl*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/librabbitmq*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/librsvg*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/librubb*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libserd*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libshine*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsodium*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsnappy*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsord*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsoup*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsoxr*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsphinx*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsr*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libssh*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libsw*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libudfread*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libva*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libvdpau*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libwpe*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libWPE*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libx264*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libx265*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libxvid*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libyuv*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libzimg*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libzmq*
+      - usr/lib/$CRAFT_ARCH_TRIPLET/libzvb*
+      - usr/share/alsa
+      - usr/share/gettext
+      - usr/share/gir-1.0
+      - usr/share/glvnd
+      - usr/share/gstreamer-1.0
+      - usr/share/iso-codes
+      - usr/share/libmysofa
+      - usr/share/locale
+      - usr/share/mfx
+      - usr/share/mime
+      - usr/share/perl5 
 
