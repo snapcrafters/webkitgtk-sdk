@@ -9,19 +9,16 @@ grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
 
 parts:
-  webkitgtk-sdk:
+  webkitgtk-6-gnome-2204-sdk:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
     source: https://github.com/WebKit/WebKit.git
     source-tag: webkitgtk-2.40.1
     plugin: cmake
-    #build-environment: 
-    #  - PYTHONPATH: $CRAFT_STAGE/lib/python3.10/site-packages
-    #  - LDFLAGS: -licuuc -licudata -licuio
     cmake-parameters:
       - -DPORT=GTK
       - -DCMAKE_BUILD_TYPE=Release
       - -DCMAKE_INSTALL_PREFIX=/usr
-      - -DCMAKE_INSTALL_LIBDIR=lib
+      - -DCMAKE_INSTALL_LIBDIR=lib/$CRAFT_ARCH_TRIPLET
       - -DCMAKE_INSTALL_LIBEXECDIR=lib
       - -DCMAKE_SKIP_RPATH=ON
       - -DUSE_AVIF=ON
@@ -88,7 +85,6 @@ parts:
       - libatomic1
       - libavif13
       - libdav1d5
-      - libelf-dev
       - libenchant-2-2
       - libepoxy0
       - libgles2
@@ -121,7 +117,7 @@ parts:
       - xdg-dbus-proxy
   prefix-fix:
     plugin: nil
-    after: [webkitgtk-sdk]
+    after: [webkitgtk-6-gnome-2204-sdk]
     override-prime: |
       craftctl default
       for PC in $(find . -path "*/pkgconfig/*.pc")
