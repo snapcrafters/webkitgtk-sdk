@@ -13,6 +13,7 @@ parts:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
     source: https://github.com/WebKit/WebKit.git
     source-tag: webkitgtk-2.40.1
+    source-depth: 1
     plugin: cmake
     cmake-parameters:
       - -DPORT=GTK
@@ -94,7 +95,6 @@ parts:
       - libatomic1
       - libavif13
       - libdav1d5
-      - libelf-dev
       - libenchant-2-2
       - libgav1-0
       - libwpe-1.0-1
@@ -109,6 +109,136 @@ parts:
       - -usr/bin/r*
       - -usr/bin/s*
       - -usr/bin/u*
+      - -usr/include/arpa
+      - -usr/include/asm-generic
+      - -usr/include/drm
+      - -usr/include/elfutils
+      - -usr/include/finclude
+      - -usr/include/linux
+      - -usr/include/misc
+      - -usr/include/mtd
+      - -usr/include/net
+      - -usr/include/netash
+      - -usr/include/netatalk
+      - -usr/include/netax25
+      - -usr/include/neteconet
+      - -usr/include/netinet
+      - -usr/include/netipx
+      - -usr/include/netiucv
+      - -usr/include/netpacket
+      - -usr/include/netrom
+      - -usr/include/netrose
+      - -usr/include/nfs
+      - -usr/include/protocols
+      - -usr/include/rdma
+      - -usr/include/rpc
+      - -usr/include/rpcsvc
+      - -usr/include/scsi
+      - -usr/include/sound
+      - -usr/include/tirpc
+      - -usr/include/video
+      - -usr/include/x86_64-linux-gnu
+      - -usr/include/xen
+      - -usr/include/aio.h
+      - -usr/include/aliases.h
+      - -usr/include/alloca.h
+      - -usr/include/ar.h
+      - -usr/include/argp.h
+      - -usr/include/argz.h
+      - -usr/include/assert.h
+      - -usr/include/byteswap.h
+      - -usr/include/complex.h
+      - -usr/include/cpio.h
+      - -usr/include/crypt.h
+      - -usr/include/ctype.h
+      - -usr/include/dirent.h
+      - -usr/include/dlfcn.h
+      - -usr/include/elf.h
+      - -usr/include/endian.h
+      - -usr/include/envz.h
+      - -usr/include/err.h
+      - -usr/include/errno.h
+      - -usr/include/error.h
+      - -usr/include/execinfo.h
+      - -usr/include/fcntl.h
+      - -usr/include/features.h
+      - -usr/include/features-time64.h
+      - -usr/include/fenv.h
+      - -usr/include/fmtmsg.h
+      - -usr/include/fnmatch.h
+      - -usr/include/fstab.h
+      - -usr/include/fts.h
+      - -usr/include/ftw.h
+      - -usr/include/gconv.h
+      - -usr/include/gelf.h
+      - -usr/include/getopt.h
+      - -usr/include/glob.h
+      - -usr/include/gnu-versions.h
+      - -usr/include/grp.h
+      - -usr/include/gshadow.h
+      - -usr/include/iconv.h
+      - -usr/include/ifaddrs.h
+      - -usr/include/inttypes.h
+      - -usr/include/langinfo.h
+      - -usr/include/lastlog.h
+      - -usr/include/libelf.h
+      - -usr/include/libgen.h
+      - -usr/include/libintl.h
+      - -usr/include/limits.h
+      - -usr/include/link.h
+      - -usr/include/locale.h
+      - -usr/include/malloc.h
+      - -usr/include/math.h
+      - -usr/include/mcheck.h
+      - -usr/include/memory.h
+      - -usr/include/mntent.h
+      - -usr/include/monetary.h
+      - -usr/include/mqueue.h
+      - -usr/include/netdb.h
+      - -usr/include/nlist.h
+      - -usr/include/nl_types.h
+      - -usr/include/nss.h
+      - -usr/include/obstack.h
+      - -usr/include/paths.h
+      - -usr/include/poll.h
+      - -usr/include/printf.h
+      - -usr/include/proc_service.h
+      - -usr/include/pthread.h
+      - -usr/include/pty.h
+      - -usr/include/pwd.h
+      - -usr/include/re_comp.h
+      - -usr/include/regex.h
+      - -usr/include/regexp.h
+      - -usr/include/resolv.h
+      - -usr/include/sched.h
+      - -usr/include/search.h
+      - -usr/include/semaphore.h
+      - -usr/include/setjmp.h
+      - -usr/include/sgtty.h
+      - -usr/include/shadow.h
+      - -usr/include/signal.h
+      - -usr/include/stdio.h
+      - -usr/include/stdlib.h
+      - -usr/include/strings.h
+      - -usr/include/string.h
+      - -usr/include/stropts.h
+      - -usr/include/sysctl.h
+      - -usr/include/syslog.h
+      - -usr/include/tar.h
+      - -usr/include/termios.h
+      - -usr/include/time.h
+      - -usr/include/timers.h
+      - -usr/include/ttyent.h
+      - -usr/include/ulimit.h
+      - -usr/include/unistd.h
+      - -usr/include/utime.h
+      - -usr/include/utmp.h
+      - -usr/include/values.h
+      - -usr/include/wordexp.h
+      - -usr/include/xattr.h
+      - -usr/include/zconf.h
+      - -usr/include/zlib.h
+      - -usr/include/zmq.h
       - -usr/lib/aspell
       - -usr/lib/emacs*
       - -usr/lib/ispell
@@ -143,7 +273,7 @@ parts:
       - -usr/lib/*/libcd*
       - -usr/lib/*/libc_non*
       - -usr/lib/*/libcrypt*
-      - -usr/lib/*/libdate*
+      - -usr/lib/*/libdat*
       - -usr/lib/*/libdconf*
       - -usr/lib/*/libdeflate*
       - -usr/lib/*/libdl.a
