@@ -328,6 +328,7 @@ parts:
       - -usr/lib/*/libtirp*
       - -usr/lib/*/libtw*
       - -usr/lib/*/libunwind*
+      - -usr/lib/*/libva.so*
       - -usr/lib/*/libvis*
       - -usr/lib/*/libvo*
       - -usr/lib/*/libvpx*
