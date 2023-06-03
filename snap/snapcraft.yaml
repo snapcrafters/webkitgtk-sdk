@@ -7,10 +7,9 @@ description: |
 
 grade: stable # must be 'stable' to release into candidate/stable channels
 confinement: strict # use 'strict' once you have the right plugs and slots
-architectures:
-  - build-on: amd64
+
 slots:
-  webkitgtk:
+  webkitgtk-6.0:
     interface: content
     read:
       - /
@@ -22,3 +21,5 @@ parts:
     prime:
       - -usr/include
       - -usr/lib/*/pkgconfig
+      - -meta*
+      - -snap*
