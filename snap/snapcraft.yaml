@@ -89,8 +89,6 @@ parts:
     stage-packages:
       - bubblewrap
       - gstreamer1.0-libav
-      - gstreamer1.0-plugins-base
-      - gstreamer1.0-plugins-good
       - libabsl20210324
       - libaom3
       - libatomic1
@@ -99,7 +97,120 @@ parts:
       - libelf-dev
       - libenchant-2-2
       - libgav1-0
-      - libwoff1  
       - libwpe-1.0-1
       - libwpebackend-fdo-1.0-1
       - libyuv0
+    prime:
+      - -etc
+      - -lib
+      - -usr/bin/fc*
+      - -usr/bin/gencat
+      - -usr/bin/i*
+      - -usr/bin/r*
+      - -usr/bin/s*
+      - -usr/bin/u*
+      - -usr/lib/aspell
+      - -usr/lib/emacs*
+      - -usr/lib/ispell
+      - -usr/lib/sys*
+      - -usr/lib/*/caca*
+      - -usr/lib/*/enchant*
+      - -usr/lib/*/gdk*
+      - -usr/lib/*/gio
+      - -usr/lib/*/gstreamer*
+      - -usr/lib/*/libv4l*
+      - -usr/lib/*/perl5
+      - -usr/lib/*/libcrypt.pc
+      - -usr/lib/*/libnsl.pc
+      - -usr/lib/*/libtirpc.pc
+      - -usr/lib/*/libxcrypt.pc
+      - -usr/lib/*/zlib.pc
+      - -usr/lib/pulseaudio
+      - -usr/lib/*/crt*
+      - -usr/lib/*/gcrt*
+      - -usr/lib/*/grcrt*
+      - -usr/lib/*/libaa*
+      - -usr/lib/*/libanl*
+      - -usr/lib/*/libasound*
+      - -usr/lib/*/libaspell*
+      - -usr/lib/*/libasyncns*
+      - -usr/lib/*/libatomic*
+      - -usr/lib/*/libavc139*
+      - -usr/lib/*/libBroken*
+      - -usr/lib/*/libc.a
+      - -usr/lib/*/libc.so
+      - -usr/lib/*/libca*
+      - -usr/lib/*/libcd*
+      - -usr/lib/*/libc_non*
+      - -usr/lib/*/libcrypt*
+      - -usr/lib/*/libdate*
+      - -usr/lib/*/libdconf*
+      - -usr/lib/*/libdeflate*
+      - -usr/lib/*/libdl.a
+      - -usr/lib/*/libdv*
+      - -usr/lib/*/libdw*
+      - -usr/lib/*/libenchant*
+      - -usr/lib/*/libepoxy*
+      - -usr/lib/*/libfontconf*
+      - -usr/lib/*/libfribidi*
+      - -usr/lib/*/libgdk*
+      - -usr/lib/*/libgomp*
+      - -usr/lib/*/libgpm*
+      - -usr/lib/*/libgraphite*
+      - -usr/lib/*/libgudev*
+      - -usr/lib/*/libharf*
+      - -usr/lib/*/libhuns*
+      - -usr/lib/*/libicu*
+      - -usr/lib/*/libiec*
+      - -usr/lib/*/libjack*
+      - -usr/lib/*/libjbig*
+      - -usr/lib/*/libjpeg*
+      - -usr/lib/*/libm.a
+      - -usr/lib/*/libm.so
+      - -usr/lib/*/libm-*
+      - -usr/lib/*/libmcheck.a
+      - -usr/lib/*/libmp*
+      - -usr/lib/*/libmv*
+      - -usr/lib/*/libnsl*
+      - -usr/lib/*/libnss*
+      - -usr/lib/*/libogg*
+      - -usr/lib/*/libopenjp*
+      - -usr/lib/*/libopus*
+      - -usr/lib/*/liborc*
+      - -usr/lib/*/libpango*
+      - -usr/lib/*/libpixman*
+      - -usr/lib/*/libproxy*
+      - -usr/lib/*/libps*
+      - -usr/lib/*/libpulse*
+      - -usr/lib/*/libq*
+      - -usr/lib/*/libraw*
+      - -usr/lib/*/libre*
+      - -usr/lib/*/librom*
+      - -usr/lib/*/libsample*
+      - -usr/lib/*/libshout*
+      - -usr/lib/*/libslang*
+      - -usr/lib/*/libsoup*
+      - -usr/lib/*/libspeex*
+      - -usr/lib/*/libtag*
+      - -usr/lib/*/libth*
+      - -usr/lib/*/libtiff*
+      - -usr/lib/*/libtirp*
+      - -usr/lib/*/libtw*
+      - -usr/lib/*/libunwind*
+      - -usr/lib/*/libvis*
+      - -usr/lib/*/libvo*
+      - -usr/lib/*/libvpx*
+      - -usr/lib/*/libwav*
+      - -usr/lib/*/libwayland*
+      - -usr/lib/*/libwebp*
+      - -usr/lib/*/libX*
+      - -usr/lib/*/libxcb*
+      - -usr/lib/*/libxkb*
+      - -usr/lib/*/libxml*
+      - -usr/lib/*/libz.a
+      - -usr/lib/*/libz.so
+      - -usr/lib/*/*crt*
+      - -usr/libexec
+      - -usr/sbin
+      - -usr/share
+
