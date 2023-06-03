@@ -120,11 +120,11 @@ parts:
       - -usr/lib/*/gstreamer*
       - -usr/lib/*/libv4l*
       - -usr/lib/*/perl5
-      - -usr/lib/*/libcrypt.pc
-      - -usr/lib/*/libnsl.pc
-      - -usr/lib/*/libtirpc.pc
-      - -usr/lib/*/libxcrypt.pc
-      - -usr/lib/*/zlib.pc
+      - -usr/lib/*/*/libcrypt.pc
+      - -usr/lib/*/*/libnsl.pc
+      - -usr/lib/*/*/libtirpc.pc
+      - -usr/lib/*/*/libxcrypt.pc
+      - -usr/lib/*/*/zlib.pc
       - -usr/lib/pulseaudio
       - -usr/lib/*/crt*
       - -usr/lib/*/gcrt*
