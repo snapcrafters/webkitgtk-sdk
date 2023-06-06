@@ -90,6 +90,7 @@ parts:
     stage-packages:
       - bubblewrap
       - gstreamer1.0-libav
+      - libgstreamer-plugins-bad1.0-0
       - libabsl20210324
       - libaom3
       - libatomic1
@@ -345,4 +346,72 @@ parts:
       - -usr/libexec
       - -usr/sbin
       - -usr/share
+      - -usr/lib/x86_64-linux-gnu/libgstallocators-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstallocators-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstapp-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstaudio-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstaudio-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstfft-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstfft-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstpbutils-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstpbutils-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstriff-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstriff-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstrtp-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstrtp-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstrtsp-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstrtsp-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstsdp-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstsdp-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgsttag-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgsttag-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstvideo-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstvideo-1.0.so.0.2001.0
+      - -usr/share/doc/libgstreamer-plugins-base1.0-0/changelog.Debian.gz
+      - -usr/share/doc/libgstreamer-plugins-base1.0-0/copyright
+      - -usr/share/gst-plugins-base/1.0/license-translations.dict
+      - -usr/lib/x86_64-linux-gnu/libdrm.so.2
+      - -usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0
+      - -usr/share/doc/libdrm2/NEWS.Debian.gz
+      - -usr/share/doc/libdrm2/changelog.Debian.gz
+      - -usr/share/doc/libdrm2/copyright
+      - -usr/share/doc/libdrm-common/changelog.Debian.gz
+      - -usr/share/doc/libdrm-common/copyright
+      - -usr/share/libdrm/amdgpu.ids
+      - -usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstcoreelements.so
+      - -usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstcoretracers.so
+      - -usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-plugin-scanner
+      - -usr/lib/x86_64-linux-gnu/gstreamer1.0/gstreamer-1.0/gst-ptp-helper
+      - -usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstbase-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstcheck-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstcheck-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstcontroller-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstcontroller-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstnet-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstnet-1.0.so.0.2001.0
+      - -usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0.2001.0
+      - -usr/share/doc/libgstreamer1.0-0/changelog.Debian.gz
+      - -usr/share/doc/libgstreamer1.0-0/copyright
+      - -usr/lib/x86_64-linux-gnu/glib-2.0/gio-launch-desktop
+      - -usr/lib/x86_64-linux-gnu/glib-2.0/gio-querymodules
+      - -usr/lib/x86_64-linux-gnu/glib-2.0/glib-compile-schemas
+      - -usr/lib/x86_64-linux-gnu/libgio-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgio-2.0.so.0.7200.1
+      - -usr/lib/x86_64-linux-gnu/libglib-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libglib-2.0.so.0.7200.1
+      - -usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgmodule-2.0.so.0.7200.1
+      - -usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.7200.1
+      - -usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0
+      - -usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.7200.1
+      - -usr/share/doc/libglib2.0-0/NEWS.gz
+      - -usr/share/doc/libglib2.0-0/README.md
+      - -usr/share/doc/libglib2.0-0/changelog.Debian.gz
+      - -usr/share/doc/libglib2.0-0/copyright
+      - -usr/share/glib-2.0/clean-up-unmanaged-libraries
+      - -usr/share/lintian/overrides/libglib2.0-0 
 
