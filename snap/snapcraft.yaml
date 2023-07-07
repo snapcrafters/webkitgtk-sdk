@@ -14,6 +14,9 @@ parts:
     source: https://github.com/WebKit/WebKit.git
     source-tag: webkitgtk-2.40.1
     source-depth: 1
+#ext:updatesnap
+#  version-format:
+#    format: 'webkitgtk-%M.%m.%R'  
     plugin: cmake
     cmake-parameters:
       - -DPORT=GTK
@@ -76,7 +79,7 @@ parts:
       - ruby-all-dev
       - unifdef
       - xdg-dbus-proxy
-      
+
   deps:
     plugin: nil
     after: [webkitgtk-6-gnome-2204-sdk]
@@ -86,7 +89,7 @@ parts:
       do
          sed -i '1cprefix=/snap/webkitgtk-6-gnome-2204-sdk/current/usr' $PC
          sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
-      done   
+      done
     stage-packages:
       - bubblewrap
       - gstreamer1.0-libav
@@ -412,5 +415,4 @@ parts:
       - -usr/share/doc/libglib2.0-0/changelog.Debian.gz
       - -usr/share/doc/libglib2.0-0/copyright
       - -usr/share/glib-2.0/clean-up-unmanaged-libraries
-      - -usr/share/lintian/overrides/libglib2.0-0 
-
+      - -usr/share/lintian/overrides/libglib2.0-0
