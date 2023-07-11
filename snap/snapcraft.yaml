@@ -14,9 +14,9 @@ parts:
     source: https://github.com/WebKit/WebKit.git
     source-tag: webkitgtk-2.40.1
     source-depth: 1
-#ext:updatesnap
-#  version-format:
-#    format: 'webkitgtk-%M.%m.%R'  
+# ext:updatesnap
+#   version-format:
+#     format: 'webkitgtk-%M.%m.%R'
     plugin: cmake
     cmake-parameters:
       - -DPORT=GTK
