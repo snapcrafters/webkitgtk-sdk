@@ -12,7 +12,7 @@ parts:
   webkitgtk-6-gnome-2204-sdk:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
     source: https://github.com/WebKit/WebKit.git
-    source-tag: 'webkitgtk-2.42.2'
+    source-tag: 'webkitgtk-2.43.1'
     source-depth: 1
 # ext:updatesnap
 #   version-format:
