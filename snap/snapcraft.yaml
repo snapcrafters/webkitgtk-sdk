@@ -32,6 +32,7 @@ parts:
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
     build-packages:
+      - android-libbacktrace-dev
       - bubblewrap
       - gettext
       - gperf
@@ -92,6 +93,7 @@ parts:
          sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
       done
     stage-packages:
+      - android-libbacktrace-dev
       - bubblewrap
       - gstreamer1.0-libav
       - libgstreamer-plugins-bad1.0-0
