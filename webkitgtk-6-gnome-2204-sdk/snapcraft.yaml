@@ -1,6 +1,6 @@
 name: webkitgtk-6-gnome-2204-sdk
 base: core22
-version: git
+version: "2.44.0"
 summary: Web content engine for GTK(SDK)
 description: |
   SDK snap for Webkitgtk-6.0+, used with gnome-42-2204 and core22.
