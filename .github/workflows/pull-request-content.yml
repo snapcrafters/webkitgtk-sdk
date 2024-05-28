@@ -1,0 +1,21 @@
+name: Pull Request for webkitgtk-6-gnome-2204
+
+on:
+  pull_request:
+    branches: ["**"]
+    paths:
+      - "webkitgtk-6-gnome-2204/**"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: 🧪 Build snap on amd64
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧪 Build snap on amd64
+        uses: snapcrafters/ci/test-snap-build@main
+        with:
+          snapcraft-project-root: webkitgtk-6-gnome-2204

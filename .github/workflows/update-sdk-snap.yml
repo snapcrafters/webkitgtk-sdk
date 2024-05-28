@@ -1,0 +1,48 @@
+name: Update SDK Snap
+
+on:
+  # Runs at 10:00 UTC every day
+  schedule:
+    - cron: "0 10 * * *"
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync-sdk:
+    name: Sync version of the SDK snap with upstream
+    environment: "2204 Branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync version with upstream
+        uses: snapcrafters/ci/sync-version@main
+        id: sync-sdk-version
+        with:
+          token: ${{ secrets.SNAPCRAFTERS_BOT_COMMIT }}
+          branch: "2204"
+          snapcraft-project-root: "webkitgtk-6-gnome-2204-sdk"
+          update-script: |
+            WEBKITGTK_VERSION=$(git ls-remote --tags --sort='v:refname' https://github.com/WebKit/WebKit.git '*gtk*' | tail --lines=1 | cut --delimiter='/' --fields=3 | rev | cut -c 4- | rev)
+            yq -i ".parts.webkitgtk-6-gnome-2204-sdk.source-tag = \"$WEBKITGTK_VERSION\"" webkitgtk-6-gnome-2204-sdk/snapcraft.yaml
+            webkitgtk_version=$(echo $WEBKITGTK_VERSION | cut -c 11-)
+            yq -i ".version=\"$webkitgtk_version\"" webkitgtk-6-gnome-2204-sdk/snapcraft.yaml
+
+  sync-content-version:
+    needs: sync-sdk
+    name: Sync version of the content snap with upstream
+    environment: "2204 Branch"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Sync version with upstream
+        uses: snapcrafters/ci/sync-version@main
+        with:
+          token: ${{ secrets.SNAPCRAFTERS_BOT_COMMIT }}
+          branch: "2204"
+          snapcraft-project-root: "webkitgtk-6-gnome-2204"
+          update-script: |
+            WEBKITGTK_VERSION=$(git ls-remote --tags --sort='v:refname' https://github.com/WebKit/WebKit.git '*gtk*' | tail --lines=1 | cut --delimiter='/' --fields=3 | rev | cut -c 4- | rev)
+            webkitgtk_version=$(echo $WEBKITGTK_VERSION | cut -c 11-)
+            yq -i ".version=\"$webkitgtk_version\"" webkitgtk-6-gnome-2204/snapcraft.yaml

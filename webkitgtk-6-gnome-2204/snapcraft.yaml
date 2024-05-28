@@ -1,0 +1,25 @@
+name: webkitgtk-6-gnome-2204
+base: core22
+version: "2.44.0"
+summary: Web content engine for GTK
+description: |
+  Content snap for Webkitgtk-6.0+
+
+grade: stable
+confinement: strict
+
+slots:
+  webkitgtk-6-gnome-2204:
+    interface: content
+    read:
+      - /
+
+parts:
+  webkitgtk:
+    plugin: nil
+    stage-snaps: [webkitgtk-6-gnome-2204-sdk/latest/candidate]
+    prime:
+      - -usr/include
+      - -usr/lib/*/pkgconfig
+      - -meta*
+      - -snap*
