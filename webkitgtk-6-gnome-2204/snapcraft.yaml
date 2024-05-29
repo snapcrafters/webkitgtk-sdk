@@ -1,19 +1,17 @@
 name: webkitgtk-6-gnome-2204
 base: core22
-version: "2.45.2"
+version: "2.45.3"
 summary: Web content engine for GTK
 description: |
   Content snap for Webkitgtk-6.0+
 grade: stable
 confinement: strict
-
 architectures:
   - build-on: amd64
   - build-on: arm64
   - build-on: armhf
   - build-on: ppc64el
   - build-on: s390x
-
 slots:
   webkitgtk-6-gnome-2204:
     interface: content
