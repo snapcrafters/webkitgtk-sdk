@@ -67,6 +67,9 @@ apps:
     environment:
       LD_LIBRARY_PATH: $SNAP/webkitgtk-platform/usr/lib:$SNAP/webkitgtk-platform/usr/lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR:$LD_LIBRARY_PATH
       PATH: $SNAP/webkitgtk-platform/usr/bin:$PATH
+    plugs:
+      - network # needed for webkitgtk to work
+      - network-status # needed for webkitgtk to work
 ```
 
 You can also declare these variables at the top level of your `snapcraft.yaml` if you want to use them in all the apps. Some snaps that use this webkitgtk-sdk.
