@@ -1,17 +1,17 @@
-name: webkitgtk-6-gnome-2204-sdk
-base: core22
+name: webkitgtk-6-gnome-2404-sdk
+base: core24
 version: "2.45.3"
 summary: Web content engine for GTK(SDK)
 description: |
   SDK snap for Webkitgtk-6.0+, used with gnome-42-2204 and core22.
 grade: stable
 confinement: strict
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
-  - build-on: ppc64el
-  - build-on: s390x
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  ppc64el:
+  s390x:
 parts:
   webkitgtk-6-gnome-2204-sdk:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
@@ -49,6 +49,7 @@ parts:
       - libghc-text-icu-dev
       - libghc-text-icu-prof
       - libgav1-dev
+      - libgirepository-1.0-dev
       - libglx-dev
       - libgstreamer1.0-dev
       - libgstreamer-plugins-bad1.0-dev
@@ -58,7 +59,6 @@ parts:
       - libharfbuzz-dev
       - libhyphen-dev
       - libicu-dev
-      - libicu-le-hb-dev
       - liblcms2-dev
       - libmanette-0.2-dev
       - libnghttp2-dev
@@ -71,8 +71,6 @@ parts:
       - libsqlite3-dev
       - libtasn1-6-dev
       - libwebp-dev
-      - libwpe-1.0-dev
-      - libwpebackend-fdo-1.0-dev
       - libwoff-dev
       - libxcomposite-dev
       - libxdamage-dev
@@ -89,22 +87,19 @@ parts:
       craftctl default
       for PC in $(find . -path "*/pkgconfig/*.pc")
       do
-         sed -i '1cprefix=/snap/webkitgtk-6-gnome-2204-sdk/current/usr' $PC
-         sed -i 's#libdir=/usr/lib#libdir=${exec_prefix}/lib#' $PC
+         sed -i '1cprefix=/snap/webkitgtk-6-gnome-2404-sdk/current/usr' $PC
+         sed -i 's#libdir=/usr/lib#libdir=${prefix}/lib#' $PC
       done
     stage-packages:
       - bubblewrap
       - gstreamer1.0-libav
       - libgstreamer-plugins-bad1.0-0
-      - libabsl20210324
       - libaom3
       - libatomic1
-      - libavif13
-      - libdav1d5
+      - libavif16
+      - libdav1d7
       - libenchant-2-2
-      - libgav1-0
-      - libwpe-1.0-1
-      - libwpebackend-fdo-1.0-1
+      - libgav1-1
       - libyuv0
     prime:
       - -etc
@@ -115,136 +110,7 @@ parts:
       - -usr/bin/r*
       - -usr/bin/s*
       - -usr/bin/u*
-      - -usr/include/arpa
-      - -usr/include/asm-generic
-      - -usr/include/drm
-      - -usr/include/elfutils
-      - -usr/include/finclude
-      - -usr/include/linux
-      - -usr/include/misc
-      - -usr/include/mtd
-      - -usr/include/net
-      - -usr/include/netash
-      - -usr/include/netatalk
-      - -usr/include/netax25
-      - -usr/include/neteconet
-      - -usr/include/netinet
-      - -usr/include/netipx
-      - -usr/include/netiucv
-      - -usr/include/netpacket
-      - -usr/include/netrom
-      - -usr/include/netrose
-      - -usr/include/nfs
-      - -usr/include/protocols
-      - -usr/include/rdma
-      - -usr/include/rpc
-      - -usr/include/rpcsvc
-      - -usr/include/scsi
-      - -usr/include/sound
-      - -usr/include/tirpc
-      - -usr/include/video
-      - -usr/include/x86_64-linux-gnu
-      - -usr/include/xen
-      - -usr/include/aio.h
-      - -usr/include/aliases.h
-      - -usr/include/alloca.h
-      - -usr/include/ar.h
-      - -usr/include/argp.h
-      - -usr/include/argz.h
-      - -usr/include/assert.h
-      - -usr/include/byteswap.h
-      - -usr/include/complex.h
-      - -usr/include/cpio.h
-      - -usr/include/crypt.h
-      - -usr/include/ctype.h
-      - -usr/include/dirent.h
-      - -usr/include/dlfcn.h
-      - -usr/include/elf.h
-      - -usr/include/endian.h
-      - -usr/include/envz.h
-      - -usr/include/err.h
-      - -usr/include/errno.h
-      - -usr/include/error.h
-      - -usr/include/execinfo.h
-      - -usr/include/fcntl.h
-      - -usr/include/features.h
-      - -usr/include/features-time64.h
-      - -usr/include/fenv.h
-      - -usr/include/fmtmsg.h
-      - -usr/include/fnmatch.h
-      - -usr/include/fstab.h
-      - -usr/include/fts.h
-      - -usr/include/ftw.h
-      - -usr/include/gconv.h
-      - -usr/include/gelf.h
-      - -usr/include/getopt.h
-      - -usr/include/glob.h
-      - -usr/include/gnu-versions.h
-      - -usr/include/grp.h
-      - -usr/include/gshadow.h
-      - -usr/include/iconv.h
-      - -usr/include/ifaddrs.h
-      - -usr/include/inttypes.h
-      - -usr/include/langinfo.h
-      - -usr/include/lastlog.h
-      - -usr/include/libelf.h
-      - -usr/include/libgen.h
-      - -usr/include/libintl.h
-      - -usr/include/limits.h
-      - -usr/include/link.h
-      - -usr/include/locale.h
-      - -usr/include/malloc.h
-      - -usr/include/math.h
-      - -usr/include/mcheck.h
-      - -usr/include/memory.h
-      - -usr/include/mntent.h
-      - -usr/include/monetary.h
-      - -usr/include/mqueue.h
-      - -usr/include/netdb.h
-      - -usr/include/nlist.h
-      - -usr/include/nl_types.h
-      - -usr/include/nss.h
-      - -usr/include/obstack.h
-      - -usr/include/paths.h
-      - -usr/include/poll.h
-      - -usr/include/printf.h
-      - -usr/include/proc_service.h
-      - -usr/include/pthread.h
-      - -usr/include/pty.h
-      - -usr/include/pwd.h
-      - -usr/include/re_comp.h
-      - -usr/include/regex.h
-      - -usr/include/regexp.h
-      - -usr/include/resolv.h
-      - -usr/include/sched.h
-      - -usr/include/search.h
-      - -usr/include/semaphore.h
-      - -usr/include/setjmp.h
-      - -usr/include/sgtty.h
-      - -usr/include/shadow.h
-      - -usr/include/signal.h
-      - -usr/include/stdio.h
-      - -usr/include/stdlib.h
-      - -usr/include/strings.h
-      - -usr/include/string.h
-      - -usr/include/stropts.h
-      - -usr/include/sysctl.h
-      - -usr/include/syslog.h
-      - -usr/include/tar.h
-      - -usr/include/termios.h
-      - -usr/include/time.h
-      - -usr/include/timers.h
-      - -usr/include/ttyent.h
-      - -usr/include/ulimit.h
-      - -usr/include/unistd.h
-      - -usr/include/utime.h
-      - -usr/include/utmp.h
-      - -usr/include/values.h
-      - -usr/include/wordexp.h
-      - -usr/include/xattr.h
-      - -usr/include/zconf.h
-      - -usr/include/zlib.h
-      - -usr/include/zmq.h
+      - -usr/include
       - -usr/lib/aspell
       - -usr/lib/emacs*
       - -usr/lib/ispell
@@ -377,11 +243,6 @@ parts:
       - -usr/share/gst-plugins-base/1.0/license-translations.dict
       - -usr/lib/x86_64-linux-gnu/libdrm.so.2
       - -usr/lib/x86_64-linux-gnu/libdrm.so.2.4.0
-      - -usr/share/doc/libdrm2/NEWS.Debian.gz
-      - -usr/share/doc/libdrm2/changelog.Debian.gz
-      - -usr/share/doc/libdrm2/copyright
-      - -usr/share/doc/libdrm-common/changelog.Debian.gz
-      - -usr/share/doc/libdrm-common/copyright
       - -usr/share/libdrm/amdgpu.ids
       - -usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstcoreelements.so
       - -usr/lib/x86_64-linux-gnu/gstreamer-1.0/libgstcoretracers.so
@@ -397,8 +258,6 @@ parts:
       - -usr/lib/x86_64-linux-gnu/libgstnet-1.0.so.0.2001.0
       - -usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0
       - -usr/lib/x86_64-linux-gnu/libgstreamer-1.0.so.0.2001.0
-      - -usr/share/doc/libgstreamer1.0-0/changelog.Debian.gz
-      - -usr/share/doc/libgstreamer1.0-0/copyright
       - -usr/lib/x86_64-linux-gnu/glib-2.0/gio-launch-desktop
       - -usr/lib/x86_64-linux-gnu/glib-2.0/gio-querymodules
       - -usr/lib/x86_64-linux-gnu/glib-2.0/glib-compile-schemas
@@ -412,9 +271,6 @@ parts:
       - -usr/lib/x86_64-linux-gnu/libgobject-2.0.so.0.7200.1
       - -usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0
       - -usr/lib/x86_64-linux-gnu/libgthread-2.0.so.0.7200.1
-      - -usr/share/doc/libglib2.0-0/NEWS.gz
-      - -usr/share/doc/libglib2.0-0/README.md
-      - -usr/share/doc/libglib2.0-0/changelog.Debian.gz
-      - -usr/share/doc/libglib2.0-0/copyright
+      - -usr/share/doc
       - -usr/share/glib-2.0/clean-up-unmanaged-libraries
-      - -usr/share/lintian/overrides/libglib2.0-0
+      - -usr/share/lintian
