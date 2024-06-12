@@ -42,7 +42,7 @@ jobs:
     steps:
       - name: 🚢 Release to latest/candidate
         id: build-amd64
-        uses: snapcrafters/ci/release-to-candidate@main
+        uses: soumyaDghosh/ci/release-to-candidate@main
         with:
           architecture: ${{ matrix.architecture }}
           launchpad-token: ${{ secrets.LP_BUILD_SECRET }}
