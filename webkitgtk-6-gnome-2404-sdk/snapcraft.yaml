@@ -16,7 +16,7 @@ parts:
   webkitgtk-6-gnome-2204-sdk:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
     source: https://github.com/WebKit/WebKit.git
-    source-tag: "webkitgtk-2.45.3"
+    source-tag: "webkitgtk-${SNAPCRAFT_PROJECT_VERSION}"
     source-depth: 1
     plugin: cmake
     cmake-parameters:
