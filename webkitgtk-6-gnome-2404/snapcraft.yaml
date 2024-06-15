@@ -6,6 +6,9 @@ description: |
   Content snap for Webkitgtk-6.0+
 grade: stable
 confinement: strict
+lint:
+  ignore:
+    - library
 platforms:
   amd64:
   arm64:
