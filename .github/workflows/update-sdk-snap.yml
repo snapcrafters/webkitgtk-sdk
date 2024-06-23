@@ -25,8 +25,7 @@ jobs:
           branch: "2404"
           snapcraft-project-root: "webkitgtk-6-gnome-2404-sdk"
           update-script: |
-            WEBKITGTK_VERSION=$(git ls-remote --tags --sort='v:refname' https://github.com/WebKit/WebKit.git '*gtk*' | tail --lines=1 | cut --delimiter='/' --fields=3 | rev | cut -c 4- | rev)
-            webkitgtk_version=$(echo $WEBKITGTK_VERSION | cut -c 11-)
+            webkitgtk_version=$(curl -s 'https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/46.2/elements/sdk/webkitgtk.inc?ref_type=tags' | yq eval '.sources[0].url' | cut -d : -f 2 | cut -d - -f 2 | cut -c -6)
             yq -i ".version=\"$webkitgtk_version\"" webkitgtk-6-gnome-2404-sdk/snapcraft.yaml
 
   sync-content-version:
@@ -42,6 +41,5 @@ jobs:
           branch: "2404"
           snapcraft-project-root: "webkitgtk-6-gnome-2404"
           update-script: |
-            WEBKITGTK_VERSION=$(git ls-remote --tags --sort='v:refname' https://github.com/WebKit/WebKit.git '*gtk*' | tail --lines=1 | cut --delimiter='/' --fields=3 | rev | cut -c 4- | rev)
-            webkitgtk_version=$(echo $WEBKITGTK_VERSION | cut -c 11-)
+            webkitgtk_version=$(curl -s 'https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/46.2/elements/sdk/webkitgtk.inc?ref_type=tags' | yq eval '.sources[0].url' | cut -d : -f 2 | cut -d - -f 2 | cut -c -6)
             yq -i ".version=\"$webkitgtk_version\"" webkitgtk-6-gnome-2404/snapcraft.yaml
