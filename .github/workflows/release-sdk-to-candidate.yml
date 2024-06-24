@@ -35,7 +35,7 @@ jobs:
     needs: get-architectures
     runs-on: ubuntu-latest
     environment: "2404 Branch"
-    timeout-minutes: 4320
+    timeout-minutes: 720
     strategy:
       fail-fast: false
       matrix:
