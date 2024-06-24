@@ -3,7 +3,7 @@ base: core24
 version: "2.44.2"
 summary: Web content engine for GTK(SDK)
 description: |
-  SDK snap for Webkitgtk-6.0+, used with gnome-42-2204 and core22.
+  SDK snap for Webkitgtk-6.0+, used with gnome-46-2204 and core24.
 grade: stable
 confinement: strict
 lint:
@@ -36,6 +36,10 @@ parts:
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
+    override-pull: |
+      craftctl default
+      patch -p1 < $CRAFT_PROJECT_DIR/patches/excessive-cpu-usage.patch
+      patch -p1 < $CRAFT_PROJECT_DIR/patches/reduce-memory-overheads.patch
     build-packages:
       - bubblewrap
       - gettext
