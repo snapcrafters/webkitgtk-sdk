@@ -1,26 +1,29 @@
-name: webkitgtk-6-gnome-2204
-base: core22
-version: "2.45.3"
+name: webkitgtk-6-gnome-2404
+base: core24
+version: "2.44.2"
 summary: Web content engine for GTK
 description: |
   Content snap for Webkitgtk-6.0+
 grade: stable
 confinement: strict
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-  - build-on: armhf
-  - build-on: ppc64el
-  - build-on: s390x
+lint:
+  ignore:
+    - library
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  ppc64el:
+  s390x:
 slots:
-  webkitgtk-6-gnome-2204:
+  webkitgtk-6-gnome-2404:
     interface: content
     read:
       - /
 parts:
   webkitgtk:
     plugin: nil
-    stage-snaps: [webkitgtk-6-gnome-2204-sdk/latest/candidate]
+    stage-snaps: [webkitgtk-6-gnome-2404-sdk/latest/candidate]
     prime:
       - -usr/include
       - -usr/lib/*/pkgconfig

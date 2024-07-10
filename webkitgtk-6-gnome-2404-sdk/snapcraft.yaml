@@ -1,0 +1,106 @@
+name: webkitgtk-6-gnome-2404-sdk
+base: core24
+version: "2.44.2"
+summary: Web content engine for GTK(SDK)
+description: |
+  SDK snap for Webkitgtk-6.0+, used with gnome-46-2204 and core24.
+grade: stable
+confinement: strict
+lint:
+  ignore:
+    - library
+platforms:
+  amd64:
+  arm64:
+  armhf:
+  ppc64el:
+  s390x:
+parts:
+  webkitgtk-6-gnome-2204-sdk:
+    #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
+    source: https://github.com/WebKit/WebKit.git
+    source-tag: "webkitgtk-${SNAPCRAFT_PROJECT_VERSION}"
+    source-depth: 1
+    plugin: cmake
+    cmake-parameters:
+      - -DPORT=GTK
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DCMAKE_INSTALL_PREFIX=/usr
+      - -DCMAKE_INSTALL_LIBDIR=lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
+      - -DCMAKE_INSTALL_LIBEXECDIR=lib/$CRAFT_ARCH_TRIPLET_BUILD_FOR
+      - -DCMAKE_SKIP_RPATH=ON
+      - -DUSE_AVIF=ON
+      - -DUSE_GTK4=ON
+      - -DUSE_LIBBACKTRACE=OFF
+      - -DUSE_JPEGXL=OFF
+      - -DENABLE_JOURNALD_LOG=OFF
+      - -DENABLE_DOCUMENTATION=OFF
+      - -DENABLE_MINIBROWSER=ON
+    override-pull: |
+      craftctl default
+      patch -p1 < $CRAFT_PROJECT_DIR/patches/excessive-cpu-usage.patch
+      patch -p1 < $CRAFT_PROJECT_DIR/patches/reduce-memory-overheads.patch
+    build-packages:
+      - bubblewrap
+      - gettext
+      - gperf
+      - icu-devtools
+      - libavif-dev
+      - libcairo2-dev
+      - libcurl4-gnutls-dev
+      - libdav1d-dev
+      - libenchant-2-dev
+      - libepoxy-dev
+      - libfreetype-dev
+      - libgcrypt20-dev
+      - libghc-text-icu-dev
+      - libghc-text-icu-prof
+      - libgav1-dev
+      - libgirepository-1.0-dev
+      - libglx-dev
+      - libgstreamer1.0-dev
+      - libgstreamer-plugins-bad1.0-dev
+      - libgstreamer-plugins-base1.0-dev
+      - libgstreamer-plugins-good1.0-dev
+      - libgtk-4-dev
+      - libharfbuzz-dev
+      - libhyphen-dev
+      - libicu-dev
+      - liblcms2-dev
+      - libmanette-0.2-dev
+      - libnghttp2-dev
+      - libopenjp2-7-dev
+      - libopengl-dev
+      - libpng-dev
+      - libsoup-3.0-dev
+      - libsecret-1-dev
+      - libseccomp-dev
+      - libsqlite3-dev
+      - libtasn1-6-dev
+      - libwebp-dev
+      - libwoff-dev
+      - libxcomposite-dev
+      - libxdamage-dev
+      - libxrender-dev
+      - libxslt1-dev
+      - libxt-dev
+      - ruby-all-dev
+      - unifdef
+      - xdg-dbus-proxy
+  debs:
+    plugin: nil
+    stage-packages:
+      - libicu74
+      - libavif16
+    prime:
+      - -usr/share
+  pkg-config-fix:
+    plugin: nil
+    after: [webkitgtk-6-gnome-2204-sdk]
+    override-prime: |
+      craftctl default
+      for PC in $(find . -path "*/pkgconfig/*.pc")
+      do
+         sed -i '1cprefix=/snap/webkitgtk-6-gnome-2404-sdk/current/usr' $PC
+         sed -i 's#libdir=/usr/lib#libdir=${prefix}/lib#' $PC
+      done
