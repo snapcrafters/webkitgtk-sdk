@@ -4,6 +4,7 @@ on:
   workflow_run:
     workflows: ["Release webkitgtk-6-gnome-2404-sdk to candidate"]
     types: [completed]
+    branches: ["2404"]
     paths:
       - "webkitgtk-6-gnome-2404/**"
   workflow_dispatch:
