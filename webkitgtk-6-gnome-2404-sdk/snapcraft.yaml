@@ -104,7 +104,6 @@ parts:
          sed -i '1cprefix=/snap/webkitgtk-6-gnome-2404-sdk/current/usr' $PC
          sed -i 's#libdir=/usr/lib#libdir=${prefix}/lib#' $PC
       done
-
   # avoid priming any libraries provided by gpu-2404 content providers
   gpu-2404:
     after: [pkg-config-fix]
