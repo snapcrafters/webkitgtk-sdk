@@ -104,13 +104,15 @@ parts:
          sed -i '1cprefix=/snap/webkitgtk-6-gnome-2404-sdk/current/usr' $PC
          sed -i 's#libdir=/usr/lib#libdir=${prefix}/lib#' $PC
       done
-  # avoid priming any libraries provided by gpu-2404 content providers
-  gpu-2404:
-    after: [pkg-config-fix]
-    source: https://github.com/canonical/gpu-snap.git
-    plugin: dump
+  # avoid priming any libraries provided by other content providers
+  cleanup:
+    after: [pkg-config-fix, debs, webkitgtk-6-gnome-2204-sdk]
+    plugin: nil
+    build-snaps:
+      - gnome-46-2404
+      - mesa-2404
     override-prime: |
-      craftctl default
-      ${CRAFT_PART_SRC}/bin/gpu-2404-cleanup mesa-2404 nvidia-2404
-    prime:
-      - bin/gpu-2404-wrapper
+      set -eux
+      for snap in "gnome-46-2404" "mesa-2404"; do
+        cd "/snap/$snap/current" && find . -type f,l -exec rm -f "$CRAFT_PRIME/{}" \;
+      done
