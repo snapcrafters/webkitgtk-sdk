@@ -1,6 +1,6 @@
 name: webkitgtk-6-gnome-2404
 base: core24
-version: "2.44.2"
+version: "2.46.0"
 summary: Web content engine for GTK
 description: |
   Content snap for Webkitgtk-6.0+
