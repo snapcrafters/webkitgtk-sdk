@@ -36,10 +36,6 @@ parts:
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
-    override-pull: |
-      craftctl default
-      patch -p1 < $CRAFT_PROJECT_DIR/patches/excessive-cpu-usage.patch
-      patch -p1 < $CRAFT_PROJECT_DIR/patches/reduce-memory-overheads.patch
     build-packages:
       - bubblewrap
       - gettext
@@ -108,9 +104,7 @@ parts:
   gpu-2404:
     after: [pkg-config-fix]
     source: https://github.com/canonical/gpu-snap.git
-    plugin: dump
+    plugin: nil
     override-prime: |
       craftctl default
-      ${CRAFT_PART_SRC}/bin/gpu-2404-cleanup mesa-2404 nvidia-2404
-    prime:
-      - bin/gpu-2404-wrapper
+      ${CRAFT_PART_SRC}/bin/gpu-2404-cleanup mesa-2404
