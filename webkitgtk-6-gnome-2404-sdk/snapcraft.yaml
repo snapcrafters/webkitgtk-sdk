@@ -1,6 +1,6 @@
 name: webkitgtk-6-gnome-2404-sdk
 base: core24
-version: "2.46.0"
+version: "2.46.2"
 summary: Web content engine for GTK(SDK)
 description: |
   SDK snap for Webkitgtk-6.0+, used with gnome-46-2204 and core24.
