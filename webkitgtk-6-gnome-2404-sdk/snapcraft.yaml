@@ -33,15 +33,10 @@ parts:
       - -DUSE_GTK4=ON
       - -DUSE_LIBBACKTRACE=OFF
       - -DUSE_JPEGXL=OFF
+      - -DENABLE_SPEECH_SYNTHESIS=OFF
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
-    override-pull: |
-      craftctl default
-      if [[ ${CRAFT_ARCH_BUILD_FOR} == "armhf" ]]; then
-        echo "patching for armhf for bmalloc..."
-        patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-bmalloc-armhf.patch
-      fi
     build-packages:
       - bubblewrap
       - gettext
