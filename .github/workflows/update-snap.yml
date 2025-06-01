@@ -1,4 +1,4 @@
-name: Update SDK Snap
+name: Update Snap
 
 on:
   # Runs at 10:00 UTC every day
@@ -41,6 +41,5 @@ jobs:
           branch: "2404"
           snapcraft-project-root: "webkitgtk-6-gnome-2404"
           update-script: |
-            latest_tag=$(git ls-remote --refs --sort='v:refname' --tags https://gitlab.gnome.org/GNOME/gnome-build-meta.git | awk -F'/' '{print $NF}' | grep -E '^[0-9]+(\.[0-9]+)*$' | sort -V | tail -n 1)
-            webkitgtk_version=$(curl -s "https://gitlab.gnome.org/GNOME/gnome-build-meta/-/raw/${latest_tag}/elements/sdk/webkitgtk.inc?ref_type=tags" | yq eval '.sources[0].url' | cut -d : -f 2 | cut -d - -f 2 | cut -c -6)
+            webkitgtk_version=$(git ls-remote --refs --sort='v:refname' --tags 'https://github.com/WebKit/WebKit.git' "webkitgtk-*" | awk -F'/' '{print $NF}' | grep -E 'webkitgtk-[0-9]+(\.[0-9]+)*\.[0-9]$' | sort -V | tail -n 1 | sed 's/^webkitgtk-//') 
             yq -i ".version=\"$webkitgtk_version\"" webkitgtk-6-gnome-2404/snapcraft.yaml
