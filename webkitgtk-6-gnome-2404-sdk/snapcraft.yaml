@@ -36,7 +36,9 @@ parts:
       - -DENABLE_SPEECH_SYNTHESIS=OFF
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
-      - -DENABLE_MINIBROWSER=ON
+      # The SDK snap does not ship MiniBrowser; disabling it avoids building
+      # WebInspectorUI generated-source targets that are fragile in CI.
+      - -DENABLE_MINIBROWSER=OFF
     build-packages:
       - bubblewrap
       - gettext
