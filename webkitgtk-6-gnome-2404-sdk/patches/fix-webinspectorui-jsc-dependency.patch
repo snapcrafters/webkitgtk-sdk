@@ -1,0 +1,11 @@
+diff --git a/Source/WebInspectorUI/CMakeLists.txt b/Source/WebInspectorUI/CMakeLists.txt
+index 211592ff231e..90b9c5ed7a52 100644
+--- a/Source/WebInspectorUI/CMakeLists.txt
++++ b/Source/WebInspectorUI/CMakeLists.txt
+@@ -85,3 +85,6 @@ add_custom_target(
+     WebInspectorUI
+     DEPENDS ${CMAKE_BINARY_DIR}/inspector-resources.stamp
+ )
++
++# Ensure JavaScriptCore generated inspector sources exist before WebInspectorUI resources copy them.
++add_dependencies(WebInspectorUI JavaScriptCore)
