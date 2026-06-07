@@ -36,10 +36,11 @@ parts:
       - -DENABLE_SPEECH_SYNTHESIS=OFF
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
-      # The SDK snap does not ship browser/debugger UI. Disabling WebInspectorUI
-      # avoids generated-source dependency failures in the PR build.
-      - -DENABLE_WEBINSPECTORUI=OFF
+      # The SDK snap does not ship MiniBrowser.
       - -DENABLE_MINIBROWSER=OFF
+    override-pull: |
+      craftctl default
+      patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webinspectorui-jsc-dependency.patch
     build-packages:
       - bubblewrap
       - gettext
