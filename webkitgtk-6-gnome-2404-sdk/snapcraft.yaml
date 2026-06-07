@@ -37,9 +37,6 @@ parts:
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
       - -DENABLE_MINIBROWSER=ON
-    override-pull: |
-      craftctl default
-      patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-build-s390x-ppc64el.patch
     build-packages:
       - bubblewrap
       - gettext
