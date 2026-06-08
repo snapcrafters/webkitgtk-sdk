@@ -41,6 +41,9 @@ parts:
     override-pull: |
       craftctl default
       patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webinspectorui-jsc-dependency.patch
+      if [ "$(uname -m)" = "s390x" ]; then
+        patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-skia-s390x-big-endian.patch
+      fi
     build-packages:
       - bubblewrap
       - gettext
