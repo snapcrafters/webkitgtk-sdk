@@ -22,6 +22,7 @@ parts:
     source-tag: "webkitgtk-${SNAPCRAFT_PROJECT_VERSION}"
     source-depth: 1
     plugin: cmake
+    cmake-generator: Ninja
     cmake-parameters:
       - -DPORT=GTK
       - -DCMAKE_BUILD_TYPE=Release
@@ -46,6 +47,7 @@ parts:
       fi
     build-packages:
       - bubblewrap
+      - ninja-build
       - gettext
       - gperf
       - icu-devtools
