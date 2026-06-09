@@ -14,7 +14,6 @@ platforms:
   arm64:
   armhf:
   ppc64el:
-  s390x:
 parts:
   webkitgtk-6-gnome-2204-sdk:
     #source: https://webkitgtk.org/releases/webkitgtk-2.40.1.tar.xz
@@ -42,9 +41,6 @@ parts:
     override-pull: |
       craftctl default
       patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webinspectorui-jsc-dependency.patch
-      if [ "$(uname -m)" = "s390x" ]; then
-        patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-skia-s390x-big-endian.patch
-      fi
     build-packages:
       - bubblewrap
       - ninja-build
