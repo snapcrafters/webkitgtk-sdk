@@ -36,6 +36,8 @@ parts:
       - -DENABLE_SPEECH_SYNTHESIS=OFF
       - -DENABLE_JOURNALD_LOG=OFF
       - -DENABLE_DOCUMENTATION=OFF
+      # The SDK snap does not ship WebDriver.
+      - -DENABLE_WEBDRIVER=OFF
       # The SDK snap does not ship MiniBrowser.
       - -DENABLE_MINIBROWSER=OFF
     override-pull: |
