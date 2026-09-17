@@ -41,6 +41,7 @@ parts:
     override-pull: |
       craftctl default
       patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webinspectorui-jsc-dependency.patch
+      patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webdriver-disabled-logging.patch
     build-packages:
       - bubblewrap
       - ninja-build
