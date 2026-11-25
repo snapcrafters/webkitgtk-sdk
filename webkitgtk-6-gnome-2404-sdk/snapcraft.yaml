@@ -43,6 +43,7 @@ parts:
     override-pull: |
       craftctl default
       patch -p1 < ${CRAFT_PROJECT_DIR}/patches/fix-webinspectorui-jsc-dependency.patch
+      patch --batch --forward --fuzz=0 -p1 < "${CRAFT_PROJECT_DIR}/patches/fix-gtk4-cursor-scaling.patch"
     build-packages:
       - bubblewrap
       - ninja-build
